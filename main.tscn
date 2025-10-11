@@ -1,0 +1,362 @@
+[gd_scene load_steps=9 format=3 uid="uid://x0hcbu8u4dd8"]
+
+[ext_resource type="Texture2D" uid="uid://bojcjusux31d5" path="res://assets/skybox.png" id="1_h2yge"]
+[ext_resource type="LightmapGIData" uid="uid://cv5q3ycms1but" path="res://assets/lumberyard_bistro/lighting/lumberyard_bistro.lmbake" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://cvfc4qabpq4vw" path="res://addons/debug_camera/debug_camera.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://q2vk6c64huqr" path="res://assets/lumberyard_bistro/lumberyard_bistro.glb" id="5_lquwl"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
+panorama = ExtResource("1_h2yge")
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("PanoramaSkyMaterial_h2yge")
+radiance_size = 1
+
+[sub_resource type="Environment" id="Environment_w4sm2"]
+background_mode = 2
+background_intensity = 8000.0
+sky = SubResource("Sky_1bvp3")
+tonemap_mode = 4
+tonemap_white = 6.0
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.61, 0.61, 0.61, 1)
+fog_sun_scatter = 1.0
+fog_density = 0.15
+fog_sky_affect = 0.013
+fog_height_density = -0.0025
+fog_depth_begin = 0.0
+fog_depth_end = 150.0
+volumetric_fog_density = 0.0065
+volumetric_fog_length = 32.0
+volumetric_fog_ambient_inject = 1.5
+volumetric_fog_sky_affect = 0.0
+volumetric_fog_temporal_reprojection_enabled = false
+adjustment_enabled = true
+adjustment_brightness = 1.75
+adjustment_contrast = 0.95
+adjustment_saturation = 1.05
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1bvp3"]
+exposure_sensitivity = 150.0
+
+[node name="Main" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w4sm2")
+camera_attributes = SubResource("CameraAttributesPractical_1bvp3")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.6794411, -0.5844375, 0.44361234, 0, 0.6045989, 0.79652977, -0.7337296, -0.5411951, 0.41078958, 0, 0, 0)
+light_intensity_lux = 85000.0
+light_temperature = 4950.0
+shadow_enabled = true
+shadow_bias = 0.035
+shadow_normal_bias = 1.3
+shadow_opacity = 0.98
+directional_shadow_mode = 0
+directional_shadow_max_distance = 25.0
+metadata/_edit_lock_ = true
+
+[node name="Lumberyard Bistro" parent="." instance=ExtResource("5_lquwl")]
+
+[node name="ReflectionProbes" type="Node3D" parent="Lumberyard Bistro"]
+
+[node name="ReflectionProbeAlley1" type="ReflectionProbe" parent="Lumberyard Bistro/ReflectionProbes"]
+transform = Transform3D(0.79997796, 0, 0.60002935, 0, 1, 0, -0.60002935, 0, 0.79997796, -10.132533, 7.3587646, -9.381012)
+max_distance = 30.0
+size = Vector3(14.883335, 16.661377, 16.603607)
+origin_offset = Vector3(0, -5, 2.5)
+enable_shadows = true
+
+[node name="ReflectionProbeAlley2" type="ReflectionProbe" parent="Lumberyard Bistro/ReflectionProbes"]
+transform = Transform3D(0.82870555, 0, 0.5596848, 0, 1, 0, -0.5596848, 0, 0.82870555, -22.842566, 7.3587646, -29.071054)
+max_distance = 50.0
+size = Vector3(13.161532, 16.661377, 33.910717)
+origin_offset = Vector3(2, 0, 5)
+enable_shadows = true
+
+[node name="ReflectionProbeGallery1" type="ReflectionProbe" parent="Lumberyard Bistro/ReflectionProbes"]
+transform = Transform3D(0.9621563, 0, 0.27249852, 0, 1, 0, -0.27249852, 0, 0.9621563, -0.8001606, 7.3587646, 4.142854)
+max_distance = 50.0
+size = Vector3(20.117678, 16.661377, 5.6394587)
+origin_offset = Vector3(0, -5.75, -2.8097293)
+enable_shadows = true
+
+[node name="ReflectionProbeGallery2" type="ReflectionProbe" parent="Lumberyard Bistro/ReflectionProbes"]
+transform = Transform3D(0.9621563, 0, 0.27249852, 0, 1, 0, -0.27249852, 0, 0.9621563, -20.182606, 7.3587646, 6.401573)
+max_distance = 40.0
+size = Vector3(22.285889, 16.661377, 11.85635)
+origin_offset = Vector3(7.5, -5.75, 0)
+enable_shadows = true
+
+[node name="ReflectionProbeVespa" type="ReflectionProbe" parent="Lumberyard Bistro/ReflectionProbes"]
+transform = Transform3D(0.96373767, 0, 0.26685145, 0, 1, 0, -0.26685145, 0, 0.96373767, -0.50255144, 0.6341683, -2.7177403)
+blend_distance = 0.1
+max_distance = 70.0
+size = Vector3(1.9950464, 1.4778756, 0.9604953)
+origin_offset = Vector3(-0.2, 0.584, 0.315)
+enable_shadows = true
+cull_mask = 1048573
+
+[node name="ReflectionProbeBistro" type="ReflectionProbe" parent="Lumberyard Bistro/ReflectionProbes"]
+transform = Transform3D(0.9999999, 0, 0.0005060667, 0, 1, 0, -0.0005060667, 0, 0.9999999, 1.3770878, 3.8089914, -4.891118)
+max_distance = 30.0
+size = Vector3(7.9956856, 9.561829, 5.2528543)
+origin_offset = Vector3(-1.375, -2.025, -1)
+enable_shadows = true
+
+[node name="ReflectionProbeTunnel" type="ReflectionProbe" parent="Lumberyard Bistro/ReflectionProbes"]
+transform = Transform3D(0.71526605, 0, 0.69885224, 0, 1, 0, -0.69885224, 0, 0.71526605, 10.342846, 7.3587646, -6.8694644)
+max_distance = 30.0
+size = Vector3(14.283264, 16.661377, 12.932865)
+origin_offset = Vector3(-1, -5.75, 1)
+enable_shadows = true
+
+[node name="LightmapBake" type="Node3D" parent="Lumberyard Bistro"]
+editor_description = "Fake subsurface scattering for some cloth meshes.
+
+Warning: If used, this will break the lightmap when the sun is rotated (as we are using lights to fake scattering). Delete this node and rebake lightmaps to avoid."
+transform = Transform3D(0.4210358, 0, 0.90704405, 0, 1, 0, -0.90704405, 0, 0.4210358, 1.185, -0.25, -7)
+visible = false
+
+[node name="Bistro" type="Node3D" parent="Lumberyard Bistro/LightmapBake"]
+
+[node name="SpotLight3DBistro1" type="SpotLight3D" parent="Lumberyard Bistro/LightmapBake/Bistro"]
+transform = Transform3D(0.92889935, 0.25224072, -0.27114633, -0.00032569095, 0.73272735, 0.68052244, 0.37033165, -0.6320485, 0.6807121, 1.0646129, 2.6015143, 3.8258257)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.691989, 0.17459357, 0, 1)
+light_energy = 0.2
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+spot_range = 8.0
+spot_attenuation = 0.25
+spot_angle = 70.0
+spot_angle_attenuation = 0.5
+
+[node name="SpotLight3DBistro2" type="SpotLight3D" parent="Lumberyard Bistro/LightmapBake/Bistro"]
+transform = Transform3D(0.92889935, 0.25224072, -0.27114633, -0.00032569095, 0.73272735, 0.68052244, 0.37033165, -0.6320485, 0.6807121, 6.5964704, 2.574538, 6.029498)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.691989, 0.17459357, 0, 1)
+light_energy = 0.2
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+spot_range = 8.0
+spot_attenuation = 0.25
+spot_angle = 70.0
+spot_angle_attenuation = 0.5
+
+[node name="SpotLight3DBistro3" type="SpotLight3D" parent="Lumberyard Bistro/LightmapBake/Bistro"]
+transform = Transform3D(0.8200613, 0.118716165, -0.5598267, 0.07770923, 0.94608533, 0.31445792, 0.56697506, -0.3013785, 0.7666227, 3.405771, 2.6687462, 4.5213294)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.691989, 0.17459357, 0, 1)
+light_energy = 0.2
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+spot_angle = 70.0
+spot_angle_attenuation = 0.5
+
+[node name="SpotLight3DBistro5" type="SpotLight3D" parent="Lumberyard Bistro/LightmapBake/Bistro"]
+transform = Transform3D(0.63905156, 0.09874523, -0.7627989, 0.14065321, 0.96000016, 0.24210845, 0.7561942, -0.26200995, 0.59960085, -2.0075097, 3.0167534, -3.7404566)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.691989, 0.17459357, 0, 1)
+light_energy = 0.5
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+spot_range = 2.5
+spot_angle = 20.0
+
+[node name="SpotLight3DBistro6" type="SpotLight3D" parent="Lumberyard Bistro/LightmapBake/Bistro"]
+transform = Transform3D(0.63905156, 0.098745115, -0.762799, 0.1406533, 0.96000016, 0.24210836, 0.7561942, -0.26200992, 0.5996007, -0.866395, 2.8988712, -6.436986)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.691989, 0.17459357, 0, 1)
+light_energy = 0.5
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+spot_range = 2.5
+spot_angle = 20.0
+
+[node name="SpotLight3DBistro4" type="SpotLight3D" parent="Lumberyard Bistro/LightmapBake/Bistro"]
+transform = Transform3D(0.9618726, 0.20498568, -0.18105781, -0.14718744, 0.94594127, 0.28901732, 0.2305145, -0.2513484, 0.9400462, -2.217339, 2.6676686, 0.8999801)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.691989, 0.17459357, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+spot_angle = 70.0
+spot_angle_attenuation = 0.5
+
+[node name="Hotel" type="Node3D" parent="Lumberyard Bistro/LightmapBake"]
+
+[node name="OmniLight3DHotel1" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.932278, 7.2471986, -14.017571)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel2" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.507358, 7.247188, -9.95144)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel3" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.474002, 3.372963, -10.084282)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel4" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.722005, 7.239898, -11.985814)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel5" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6565413, 7.2398987, -19.671118)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel6" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.056658, 7.239899, -14.894164)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel7" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1858377, 3.349587, -16.91975)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel8" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.443376, 3.3495865, -12.297563)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel9" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.474002, 7.24215, -10.084242)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel10" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4042238, 7.241451, -21.924107)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel11" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0203464, 7.241423, -17.109055)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="OmniLight3DHotel12" type="OmniLight3D" parent="Lumberyard Bistro/LightmapBake/Hotel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4338546, 7.241395, -12.306047)
+light_intensity_lumens = 85000.0
+light_temperature = 4700.0
+light_color = Color(0.69377023, 0.17112592, 0, 1)
+light_energy = 0.75
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 1.25
+omni_attenuation = 0.75
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+editor_description = "oiiotool lumberyard_bistro.exr -d half --compression zip --tile 128 512 -o lumberyard_bistro.exr"
+quality = 3
+supersampling = true
+bounces = 16
+directional = true
+shadowmask_mode = 1
+denoiser_range = 1
+generate_probes_subdiv = 0
+light_data = ExtResource("3_1bvp3")
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.8660254, -0.08682408, -0.49240384, 0, 0.98480767, -0.17364816, 0.5, 0.15038371, 0.85286844, -1.8, 1.8, 2.8)
+fov = 70.0
+script = ExtResource("4_1bvp3")
