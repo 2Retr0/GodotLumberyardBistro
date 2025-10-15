@@ -15,4 +15,4 @@ The `.glb` should be easy to import into other software, though embedded normal 
 
 # Attribution
 **[Amazon Lumberyard Bistro](https://developer.nvidia.com/orca/amazon-lumberyard-bistro)** by **Amazon Lumberyard** is modified and used under the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.\
-**[Evening Road 01 (Pure Sky)](https://polyhaven.com/a/evening_road_01_puresky)** by **Jarod Guest** is used under the [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) license.
+**[Evening Road 01 (Pure Sky)](https://polyhaven.com/a/evening_road_01_puresky)** by **Jarod Guest** is modified and used under the [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) license.
